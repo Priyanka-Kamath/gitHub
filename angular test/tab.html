@@ -1,0 +1,251 @@
+<!doctype html>
+<html ng-app="testapp">
+<head>
+<meta charset="utf-8">
+<title>tast2</title>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body ng-controller="testCtrl">
+<div class="mainBlock"><section class="tab">
+<div class="tabMain">
+<div class="tabMenu">
+
+<!--TAB BLOCK START-->
+    <ul>
+      <li class="tab1"><a href="#tab_list1">The list</a></li>
+      <li class="tab2"><a href="#tab_list2">Buddies</a></li>
+      <li class="tab3"><a href="#tab_list3">Buddy Status</a></li>
+      <li class="tab4"><a href="#tab_list4">Add buddy</a></li>
+    </ul>
+<!--TAB BLOCK ENDS-->
+    
+<div class="contentBlock">
+  <!--TAB ONE START-->
+  <div class="Content_tab" id="tab_list1">
+    <form method="POST">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td><label>User Name</label></td>
+          <td><span>{{destUserName}}</span></td>
+        </tr>
+        <tr>
+          <td><label>First Name</label></td>
+          <td><span>{{destFirstName}}</span></td>
+        </tr>
+        <tr>
+          <td><label>Last Name</label></td>
+          <td><span>{{destLastName}}</span></td>
+        </tr>
+      </table>
+      </div>
+  <!--TAB ONE ENDS-->
+  
+  <!--TAB TWO START-->
+  <div class="Content_tab" id="tab_list2">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td><label>User Name</label></td>
+        <td><span>{{destUserName}}</span></td>
+      </tr>
+      <tr>
+        <td><label>First Name</label></td>
+        <td><span>{{destFirstName}}</span></td>
+      </tr>
+      <tr>
+        <td><label>Last Name</label></td>
+        <td><span>{{destLastName}}</span></td>
+      </tr>
+      <tr>
+        <td><label>Status</label></td>
+        <td><select>
+            <option>Avaliable</option>
+            <option>Busy</option>
+            <option>Idle</option>
+            <option>Offline</option>
+          </select></td>
+      </tr>
+      <tr>
+        <td class="button popup"><input type="button" value="Add" class="add"></td>
+        <td><input type="button" value="Delete" class="add delete" ng-click="clearDstData()"></td>
+      </tr>
+    </table>
+    <div class="dialogBoxBlock dialogBoxBlock1">
+      <div class="dialog">
+        <div class="dialogBox">
+          <h2>Add Buddy</h2>
+          <figure class="close"><img src="images/close.png" alt="close"></figure>
+          <table width="100%" border="0" cellspacing="0" cellpadding="0" class="Content_tab1">
+            <tr>
+              <td><label>User Name</label></td>
+              <td><input type="text" placeholder="UserName" ng-model="srcUserName"></td>
+            </tr>
+            <tr>
+              <td><label>First Name</label></td>
+              <td><input type="text" placeholder="First Name" ng-model="srcFirstName"></td>
+            </tr>
+            <tr>
+              <td><label>Last Name</label></td>
+              <td><input type="text" placeholder="Last Name" ng-model="srcLastName"></td>
+            </tr>
+            <tr>
+              <td class="button"><input type="button" value="Close" class="add close1"></td>
+              <td><input type="button" value="Add" class="add" ng-click="fillDetatis()"></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--TAB TWO ENDS-->
+  
+  <!--TAB THREE START-->
+  <div class="Content_tab" id="tab_list3">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="buddyStatus">
+      <tr>
+        <td><label>Status</label></td>
+        <td><select>
+            <option class="offline" value="avaliabel">Avaliable</option>
+            <option class="offline" value="busy">Busy</option>
+            <option id="online" value="offline">Offline</option>
+          </select>
+          </td>
+          <td><div class="data">Last log-off :- 10:50pm</div></td>
+      </tr>
+    </table>
+    
+  </div>
+  <!--TAB THREE ENDS-->
+  
+  <!--TAB FOUR START-->
+  <div class="Content_tab" id="tab_list4">
+    <div class="dialogBoxBlock" id="tab5">
+      <div class="dialog">
+        <div class="dialogBox">
+          <h2>Add Buddy</h2>
+          <figure class="close"><img src="images/close.png" alt="close"></figure>
+          <table width="100%" border="0" cellspacing="0" cellpadding="0" class="Content_tab1">
+            <tr>
+              <td><label>User Name</label></td>
+              <td><input type="text" placeholder="UserName" ng-model="srcUserName"></td>
+            </tr>
+            <tr>
+              <td><label>First Name</label></td>
+              <td><input type="text" placeholder="First Name" ng-model="srcFirstName"></td>
+            </tr>
+            <tr>
+              <td><label>Last Name</label></td>
+              <td><input type="text" placeholder="Last Name" ng-model="srcLastName"></td>
+            </tr>
+            <tr>
+              <td class="button closePopup"><input type="button" value="Close" class="add close1"></td>
+              <td><input type="button" value="Add" class="add" ng-click="fillDetatis()"></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--TAB FOUR ENDS-->
+  </div>
+  </div>
+  </div></form>
+  </section></div>
+
+<script src="js/jquery-1.11.1.min.js" type="text/javascript"></script> 
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/angular.min.js"></script>
+
+<script language="javascript">
+  var testapp=angular.module("testapp",[])
+  testapp.controller("testCtrl",function($scope){ 
+	   $scope.destUserName="john cina";
+	   $scope.destFirstName="john";
+	   $scope.destLastName="cina";
+	   
+	   $scope.clearSrcData=function()
+	   {
+		  $scope.srcUserName="";
+		  $scope.srcFirstName="";
+		  $scope.srcLastName="";
+	   }
+	   
+	    $scope.clearDstData=function()
+	   {
+		  $scope.destUserName="";
+		  $scope.destFirstName="";
+		  $scope.destLastName="";
+	   }
+	   
+	   $scope.fillDetatis=function()
+	   {
+		   if(($scope.srcUserName!="" && $scope.srcUserName!=undefined) && ($scope.srcFirstName!="" && $scope.srcFirstName!=undefined) 
+		   && ($scope.srcLastName!="" && $scope.srcLastName!=undefined))
+		   {			   
+			   $scope.destUserName=$scope.srcUserName;
+			   $scope.destFirstName=$scope.srcFirstName;
+			   $scope.destLastName=$scope.srcLastName;
+			   $scope.clearSrcData();
+			   
+		   }
+		   else
+		   {
+			   alert("Fill All Are Fields");
+		   }
+	   }
+	   
+	  
+	   
+  });
+  
+  <!--JQUERY CODE-->
+  
+$(document).ready(function() {
+	
+    $('.contentBlock .Content_tab').hide();
+	$('.contentBlock .Content_tab:eq(0)').show();
+	$(".tabMenu ul li a:eq(0)").addClass('active');
+	$(".tabMenu ul li a").click(function(e){
+		$(".tabMenu ul li a").removeClass('active');
+		 e.preventDefault();
+		 $(this).addClass('active');
+		 var id = $(this).attr('href');
+		 $('.Content_tab').hide();
+		 $(id).fadeIn('slow');
+	});
+	
+	$(".tab4").click(function(){
+        $(".dialogBoxBlock").fadeIn();
+    });
+	$(".close,.close1").click(function(){
+        $(".dialogBoxBlock,.dialogBoxBlock1").fadeOut();
+    });
+	
+	$(".popup").click(function(){
+		$(".dialogBoxBlock1").show();	
+	});
+	
+	
+	$('select').change(function(){
+		
+    	$("#online").click(function(){
+			$(".data").show();	
+		 $(".offline").click(function(){
+			$(".data").hide(); 
+			});
+		})
+		
+	});
+	
+	$(".tab2").click(function(){
+		$(".dialogBoxBlock1").hide();	
+	});
+	
+	
+	
+});
+
+</script>
+
+</body>
+</html>
